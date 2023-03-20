@@ -1,10 +1,20 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 
 
 export default function Home() {
+  const fetchPosts = () => {
+    fetch('/api/post').then((e) => {
+      return e.json()
+    }).then((res) => console.log(res))
+  }
+
+  useEffect(() => {
+    fetchPosts();
+  }, [])
   return (
     <>
       <Head>
